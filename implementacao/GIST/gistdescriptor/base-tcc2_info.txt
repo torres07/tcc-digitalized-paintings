@@ -1,0 +1,5 @@
+1-64 -> Cubismo
+65-128 -> Expressionismo
+129-192 -> Impressionismo
+193-256 -> Romantismo
+257-320 -> Surrealismo
