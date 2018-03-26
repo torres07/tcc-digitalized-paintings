@@ -1,0 +1,48 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 1000 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     ../arff/gist_features.arff-weka.filters.unsupervised.instance.RemoveWithValues-S0.0-Clast-L2,6-H
+Instances:    1794
+Attributes:   513
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 1000 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 24.18 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         951               53.01   %
+Incorrectly Classified Instances       843               46.99   %
+Kappa statistic                          0.3713
+Mean absolute error                      0.3303
+Root mean squared error                  0.3965
+Relative absolute error                 88.224  %
+Root relative squared error             91.629  %
+Total Number of Instances             1794     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,529    0,129    0,578      0,529    0,552      0,413    0,768     0,609     cubismo
+                 0,649    0,200    0,553      0,649    0,597      0,429    0,803     0,648     impress
+                 0,445    0,148    0,492      0,445    0,468      0,308    0,742     0,464     realismo
+                 0,478    0,151    0,485      0,478    0,482      0,329    0,761     0,466     romanti
+Weighted Avg.    0,530    0,158    0,529      0,530    0,528      0,372    0,770     0,552     
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 237 104  48  59 |   a = cubismo
+  79 322  50  45 |   b = impress
+  41  97 195 105 |   c = realismo
+  53  59 103 197 |   d = romanti
+

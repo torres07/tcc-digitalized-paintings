@@ -1,0 +1,15 @@
+Base:
+	Base inicial: 6 movimentos, 512 imagens coletadas para cada movimento, total -> 3072
+	Base depois do filtro manual: 6 movimentos, 2650 pinturas. Remoção de imagens duplicadas, fotografias de objetos (esculturas, monumentos, estatuas)
+
+pinturas:
+cubismo: 1-448
+expressionismo: 449-895
+impressionismo:  896-1391
+realismo: 1392-1829
+romanti: 1830-2241
+surreali: 2242-2650
+
+listar ordenado em cada linha para criar o log: ls -1v
+
+

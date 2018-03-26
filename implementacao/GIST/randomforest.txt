@@ -1,0 +1,52 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 1000 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     ../arff/gist_features.arff
+Instances:    2650
+Attributes:   513
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 1000 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 44.91 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        1019               38.4528 %
+Incorrectly Classified Instances      1631               61.5472 %
+Kappa statistic                          0.2588
+Mean absolute error                      0.2591
+Root mean squared error                  0.3555
+Relative absolute error                 93.3405 %
+Root relative squared error             95.4244 %
+Total Number of Instances             2650     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,408    0,117    0,415      0,408    0,412      0,293    0,723     0,413     cubismo
+                 0,289    0,090    0,393      0,289    0,333      0,225    0,707     0,339     expressi
+                 0,597    0,197    0,411      0,597    0,487      0,351    0,776     0,484     impress
+                 0,418    0,133    0,384      0,418    0,400      0,275    0,748     0,366     realismo
+                 0,383    0,135    0,343      0,383    0,362      0,238    0,750     0,321     romanti
+                 0,171    0,069    0,313      0,171    0,221      0,133    0,649     0,257     surreal
+Weighted Avg.    0,385    0,125    0,378      0,385    0,373      0,256    0,727     0,367     
+
+=== Confusion Matrix ===
+
+   a   b   c   d   e   f   <-- classified as
+ 183  63  77  42  50  33 |   a = cubismo
+  80 129 135  37  41  25 |   b = expressi
+  47  56 296  46  41  10 |   c = impress
+  28  23  88 183  79  37 |   d = realismo
+  38  24  40 103 158  49 |   e = romanti
+  65  33  84  66  91  70 |   f = surreal
+
