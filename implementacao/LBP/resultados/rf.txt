@@ -1,0 +1,105 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 1500 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     ../arff/lbp_features.csv-weka.filters.unsupervised.instance.RemoveWithValues-S0.0-Clast-L3-H
+Instances:    1114
+Attributes:   60
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+              10
+              11
+              12
+              13
+              14
+              15
+              16
+              17
+              18
+              19
+              20
+              21
+              22
+              23
+              24
+              25
+              26
+              27
+              28
+              29
+              30
+              31
+              32
+              33
+              34
+              35
+              36
+              37
+              38
+              39
+              40
+              41
+              42
+              43
+              44
+              45
+              46
+              47
+              48
+              49
+              50
+              51
+              52
+              53
+              54
+              55
+              56
+              57
+              58
+              59
+              movimento
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 1500 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 13.85 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         681               61.1311 %
+Incorrectly Classified Instances       433               38.8689 %
+Kappa statistic                          0.4168
+Mean absolute error                      0.3508
+Root mean squared error                  0.4124
+Relative absolute error                 78.9751 %
+Root relative squared error             87.5145 %
+Total Number of Instances             1114     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,576    0,218    0,586      0,576    0,581      0,359    0,751     0,632     cubismo
+                 0,552    0,190    0,583      0,552    0,567      0,368    0,762     0,566     express
+                 0,708    0,176    0,661      0,708    0,684      0,523    0,855     0,728     romant
+Weighted Avg.    0,611    0,195    0,610      0,611    0,610      0,415    0,788     0,642     
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 224  98  67 |   a = cubismo
+  97 200  65 |   b = express
+  61  45 257 |   c = romant
+

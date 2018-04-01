@@ -1,0 +1,37 @@
+Dense(1024, input_dim=512, activation='relu'))
+Baseline: 69.12% (5.91%)
+
+model.add(Dense(1024, input_dim=512, activation='relu'))
+    model.add(Dense(1024, activation='sigmoid'))
+Baseline: 69.92% (5.44%)
+
+
+66.07% (5.17%)
+
+estimator = KerasClassifier(build_fn=baseline_model, epochs=200, batch_size=128, verbose=1)
+
+#GISTTTTTTT!!!!!!!!!!
+# define baseline model
+def baseline_model():
+    # create model
+    model = Sequential()
+    model.add(Dense(1024, input_dim=512, activation='relu'))
+    model.add(Dense(1024, activation='sigmoid'))
+    model.add(Dense(3, activation='softmax'))
+    # Compile model
+    optimizer = Adam(lr=0.001)
+    model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    #model.compile(loss='categorical_crossentropy', optimizer='tanh', metrics=['accuracy'])
+    return model
+Baseline: 70.37% (5.49%)
+
+==================================================================================================
+        RF      MLP     MC
+COLOR   67.86   65.62   68.40
+LBP     61.13   55.21   62.48
+GIST    68.13   68.76   70.37
+
+===============================================================
+
+
+RF

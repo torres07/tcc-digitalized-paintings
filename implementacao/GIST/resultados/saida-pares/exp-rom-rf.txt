@@ -1,0 +1,44 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 1500 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     ../arff/gist_features.arff-weka.filters.unsupervised.instance.RemoveWithValues-S0.0-Clast-L1,3-H
+Instances:    725
+Attributes:   513
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 1500 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 12.32 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         592               81.6552 %
+Incorrectly Classified Instances       133               18.3448 %
+Kappa statistic                          0.6331
+Mean absolute error                      0.3427
+Root mean squared error                  0.3828
+Relative absolute error                 68.5412 %
+Root relative squared error             76.5496 %
+Total Number of Instances              725     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,809    0,176    0,821      0,809    0,815      0,633    0,893     0,891     express
+                 0,824    0,191    0,813      0,824    0,818      0,633    0,893     0,885     romant
+Weighted Avg.    0,817    0,183    0,817      0,817    0,817      0,633    0,893     0,888     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 293  69 |   a = express
+  64 299 |   b = romant
+
