@@ -2,7 +2,9 @@ from Bio import Phylo
 
 tree_ = dict()
 
-tree = Phylo.read('texts.newick', 'newick')
+#tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
+
+tree = Phylo.read('/home/pedrotorres/tmp/louco.newick', 'newick')
 
 for i in tree.get_terminals():
 	len_ = len(tree.get_path(i))
@@ -63,26 +65,37 @@ def files_per_depth(n):
 	S = []
 	S_ = []
 	S.append(int(tree_[tree_.keys()[0]][0].split('.')[0]))
-	S_.append(int(tree_[tree_.keys()[0]][0].split('.')[0]))
+	labels[int(tree_[tree_.keys()[0]][0].split('.')[0])] = True
+	
 	while(len(S)):
 		u = S.pop()
-		if u not in S_:
-			S_.append(u)
-		if(not labels[u]):
-			labels[u] = True
-			for v in tree__[u]:
-				v = int(v)
+		S_.append(u)
+		for v in tree__[u]:
+			v = int(v)
+			if (not labels[v]):
+				labels[v] = True
 				S.append(v)
 	
+	for u in tree_[tree_.keys()[0]]:
+		u = int(u.split('.')[0])
+		if u not in S_:
+			S_.append(u)
+			labels[u] = True
+			k = k + 1
+
 	S_ = map(str, S_)
 	S_ = map(concat_txt, S_)
 
-	if n < len(S_):
+	if n <= len(S_):
 		return S_[0:n]
 
-for i in tree_:
-	print (i, tree_[i])
+# files__ = files_per_level(10)
+# files__ = files_per_level_reverse(10)
+files__ = files_per_depth(20)
 
-# print files_per_level(10)
-# print files_per_level_reverse(10)
-print files_per_depth(10)
+out_ = ''
+for i in files__:
+	i = i.split('.')[0]
+	out_ = out_ + i + ' '
+
+print out_
