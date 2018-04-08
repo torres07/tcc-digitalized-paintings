@@ -2,9 +2,17 @@ from Bio import Phylo
 
 tree_ = dict()
 
-#tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
+#GIST
+# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
 
-tree = Phylo.read('/home/pedrotorres/tmp/louco.newick', 'newick')
+#COLOR
+# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
+
+#LBP
+tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/LBP/lbp.newick', 'newick')
+
+#DEBUG
+#tree = Phylo.read('/home/pedrotorres/tmp/louco.newick', 'newick')
 
 for i in tree.get_terminals():
 	len_ = len(tree.get_path(i))
@@ -89,9 +97,9 @@ def files_per_depth(n):
 	if n <= len(S_):
 		return S_[0:n]
 
-# files__ = files_per_level(10)
+files__ = files_per_level(10)
 # files__ = files_per_level_reverse(10)
-files__ = files_per_depth(20)
+# files__ = files_per_depth(10)
 
 out_ = ''
 for i in files__:
