@@ -3,13 +3,13 @@ from Bio import Phylo
 tree_ = dict()
 
 #GIST
-# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
+tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
 
 #COLOR
 # tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
 
 #LBP
-tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/LBP/lbp.newick', 'newick')
+# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/LBP/lbp.newick', 'newick')
 
 #DEBUG
 #tree = Phylo.read('/home/pedrotorres/tmp/louco.newick', 'newick')
@@ -60,12 +60,17 @@ def files_per_depth(n):
 	for i in range(count_nodes() + 1):
 	 	tree__.append([])
 	 	labels.append(False)
-	for i in tree_:
-		if (i + 1 in tree_):
+	for i in tree_:		
+		f_ = 1
+		while i + f_ not in tree_:
+			f_ = f_ + 1
+			if f_ > tree_.keys()[len(tree_) - 1]:
+				break
+		if (i + f_ in tree_):
 			for j in tree_[i]:
 				j = j.split('.')
 				j = int(j[0])
-				for k in tree_[i + 1]:
+				for k in tree_[i + f_]:
 					k = k.split('.')
 					k = int(k[0])
 					tree__[j].append(k)
@@ -83,13 +88,11 @@ def files_per_depth(n):
 			if (not labels[v]):
 				labels[v] = True
 				S.append(v)
-	
 	for u in tree_[tree_.keys()[0]]:
 		u = int(u.split('.')[0])
 		if u not in S_:
 			S_.append(u)
 			labels[u] = True
-			k = k + 1
 
 	S_ = map(str, S_)
 	S_ = map(concat_txt, S_)
@@ -97,9 +100,9 @@ def files_per_depth(n):
 	if n <= len(S_):
 		return S_[0:n]
 
-files__ = files_per_level(10)
-# files__ = files_per_level_reverse(10)
-# files__ = files_per_depth(10)
+# files__ = files_per_level(12)
+files__ = files_per_level_reverse(12)
+# files__ = files_per_depth(12)
 
 out_ = ''
 for i in files__:
