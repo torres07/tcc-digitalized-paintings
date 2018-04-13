@@ -228,22 +228,16 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas):
 # tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/LBP/lbp.newick', 'newick')
 # build_tree(tree)
 
-# print gerar_dados_exposicoes('lbp', 10, 16)
+# print gerar_dados_exposicoes('lbp', 10, 102)
 
-print ('GIST')
-tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
+# print ('GIST')
+# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
+# build_tree(tree)
+
+# print gerar_dados_exposicoes('gist', 10, 102)
+
+print ('COLOR')
+tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
 build_tree(tree)
 
-print gerar_dados_exposicoes('gist', 20, 12)
-
-# print ('COLOR')
-# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
-# for i in range(10):
-# 	files__ = files_per_level_reverse(12, i)
-# 	out_ = ''
-# 	for i in files__:
-# 		i = i.split('.')[0]
-# 		out_ = out_ + i + ' '
-# 	euclidian_distances('color', out_)
-
-# print ('RANDOM')
+print gerar_dados_exposicoes('color', 10, 102)
