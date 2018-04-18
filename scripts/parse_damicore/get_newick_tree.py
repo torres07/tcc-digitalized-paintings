@@ -2,7 +2,7 @@
 # @Author: Pedro Torres
 # @Date:   2018-04-15 21:39:40
 # @Last Modified by:   Pedro Torres
-# @Last Modified time: 2018-04-16 20:58:43
+# @Last Modified time: 2018-04-17 22:19:52
 
 import random
 import numpy as np
@@ -10,18 +10,6 @@ from Bio import Phylo
 from Bio.Phylo.Consensus import *
 
 tree_ = dict()
-
-#GIST
-# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
-
-#COLOR
-# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
-
-#LBP
-# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/LBP/lbp.newick', 'newick')
-
-#DEBUG
-#tree = Phylo.read('/home/pedrotorres/tmp/louco.newick', 'newick')
 
 def build_tree(tree):
 	for i in tree.get_terminals():
@@ -38,19 +26,30 @@ def build_tree(tree):
 def files_per_level(n):
 	files_ = []
 	start = random.randint(0, len(tree_.keys()) - 1)
+	flag = False
 	for i in tree_.keys()[start:]:
-		for j in tree_[i][random.randint(0, len(tree_[i]) - 1):]:
-			files_.append(j)
-	
+		if(not flag):
+			for j in tree_[i][random.randint(0, len(tree_[i]) - 1):]:
+				files_.append(j)
+			flag = True
+		else:
+			for j in tree_[i]:
+				files_.append(j)
 	return files_[0:n]			
 
 def files_per_level_reverse(n):
 	files_ = []
 	start = random.randint(0, len(tree_.keys()) - 1)
 	keys = list(reversed(sorted(tree_.keys())))
+	flag = False
 	for i in keys[start:]:
-		for j in tree_[i][random.randint(0, len(tree_[i]) - 1):]:
-			files_.append(j)
+		if(not flag):
+			for j in tree_[i][random.randint(0, len(tree_[i]) - 1):]:
+				files_.append(j)
+			flag = True
+		else:
+			for j in tree_[i]:
+				files_.append(j)
 	return files_[0:n]			
 		
 
@@ -69,31 +68,37 @@ def concat_txt(s):
 def files_per_depth(n):
 	tree__ = []
 	labels = []
+
 	for i in range(count_nodes() + 1):
 	 	tree__.append([])
 	 	labels.append(False)
+
+	
 	start = random.randint(0, len(tree_.keys()) - 1)
-	for i in tree_.keys()[start:]:	
-		random.shuffle(tree_[i])	
+	new_tree = {your_key: tree_[your_key] for your_key in tree_.keys()[start:]}
+
+	for i in new_tree.keys():	
 		f_ = 1
-		while i + f_ not in tree_:
+		while i + start + f_ not in new_tree:
 			f_ = f_ + 1
-			if f_ > tree_.keys()[len(tree_) - 1]:
+			if f_ > new_tree.keys()[len(new_tree) - 1]:
 				break
-		if (i + f_ in tree_):
-			for j in tree_[i][random.randint(0, len(tree_[i]) - 1):]:
+		if (i + f_ in new_tree):
+			for j in new_tree[i]:
 				j = j.split('.')
 				j = int(j[0])
-				for k in tree_[i + f_]:
+				for k in new_tree[i + f_]:
 					k = k.split('.')
 					k = int(k[0])
 					tree__[j].append(k)
 
 	S = []
 	S_ = []
-	S.append(int(tree_[tree_.keys()[start]][0].split('.')[0]))
-	labels[int(tree_[tree_.keys()[start]][0].split('.')[0])] = True
 	
+	rnd = random.randint(0, len(new_tree[new_tree.keys()[0]]) - 1)
+	S.append(int(new_tree[new_tree.keys()[0]][rnd].split('.')[0]))
+	labels[int(new_tree[new_tree.keys()[0]][rnd].split('.')[0])] = True
+
 	while(len(S)):
 		u = S.pop()
 		S_.append(u)
@@ -102,7 +107,8 @@ def files_per_depth(n):
 			if (not labels[v]):
 				labels[v] = True
 				S.append(v)
-	for u in tree_[tree_.keys()[0]]:
+	
+	for u in new_tree[new_tree.keys()[0]]:
 		u = int(u.split('.')[0])
 		if u not in S_:
 			S_.append(u)
@@ -209,10 +215,14 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
 	l_2 = []
 	l_3 = []
 
+	_k_ = 0
+
 	for i in range(n_exp):
 		files__ = files_per_level(n_pinturas)
 		while(len(files__) != n_pinturas):
 			files__ = files_per_level(n_pinturas)
+		_k_ = _k_ + 1
+		print _k_
 		out_ = ''
 		for i in files__:
 			i = i.split('.')[0]
@@ -228,6 +238,8 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
 		files__ = files_per_level_reverse(n_pinturas)
 		while(len(files__) != n_pinturas):
 			files__ = files_per_level_reverse(n_pinturas)
+		_k_ = _k_ + 1
+		print _k_
 		out_ = ''
 		for i in files__:
 			i = i.split('.')[0]
@@ -243,6 +255,8 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
 		files__ = files_per_depth(n_pinturas)
 		while(len(files__) != n_pinturas):
 			files__ = files_per_depth(n_pinturas)
+		_k_ = _k_ + 1
+		print _k_
 		out_ = ''
 		for i in files__:
 			i = i.split('.')[0]
@@ -255,6 +269,8 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
 	print('dfs end')
 
 	for i in range(n_exp):
+		_k_ = _k_ + 1
+		print _k_
 		if method == 'euclidian':
 			l_3.append(euclidian_distances(desc, n_pinturas))
 		elif method == 'branch':
@@ -281,15 +297,15 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
 
 # print gerar_dados_exposicoes('lbp', 30, 32)
 
-# print ('GIST')
-# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
-# build_tree(tree)
+print ('GIST')
+tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
+build_tree(tree)
 
 # print gerar_dados_exposicoes('gist', 10, 32)
 
-print ('COLOR')
-tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
-build_tree(tree)
+# print ('COLOR')
+# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
+# build_tree(tree)
 
 #print gerar_dados_exposicoes('color', 10, 12, 'branch')
 
@@ -301,7 +317,7 @@ build_tree(tree)
 # print tree.distance(a,a)
 
 
-n_pinturas = 16
+n_pinturas = 64
 # files__ = files_per_level(n_pinturas)
 # while(len(files__) != n_pinturas):
 # 	files__ = files_per_level(n_pinturas)
@@ -311,4 +327,4 @@ n_pinturas = 16
 # 	out_ = out_ + i + ' '
 
 # print branch_distances(tree, n_pinturas, out_)
-print gerar_dados_exposicoes('color', 100, n_pinturas, 'euclidian', tree)
+print gerar_dados_exposicoes('gist', 50, n_pinturas, 'branch', tree)
