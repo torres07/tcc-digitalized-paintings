@@ -2,7 +2,7 @@
 # @Author: Pedro Torres
 # @Date:   2018-04-17 15:23:22
 # @Last Modified by:   Pedro Torres
-# @Last Modified time: 2018-04-18 16:10:00
+# @Last Modified time: 2018-04-19 06:37:42
 
 from Bio import Phylo
 import numpy as np
@@ -54,14 +54,35 @@ def get_nearest(n, dic):
 	return nj[:n + 1]
 
 dic = read_phylip()
-print get_nearest(5, dic)
+# print get_nearest(5, dic)
 
 tree = Phylo.read('/home/pedrotorres/tmp/ex.newick', 'newick')
 
 S = []
 
+
 for clade in tree.find_clades(order='preorder'):
 	if clade.is_terminal():
 		S.append(clade.name)
 
+branch_matrix = []
+
+for i in range(len(S)):
+	branch_matrix.append([])
+	for j in range(len(S)):
+		branch_matrix[i].append(0)
+
+for i in range(len(S)):
+	for j in range(len(S)):
+		i_ = tree.find_any(S[i])
+		j_ = tree.find_any(S[j])
+		branch_matrix[i][j] = tree.distance(i_,j_)
+
+k = 0
+# for i in branch_matrix:
+# 	print S[k]
+# 	print i
+# 	k = k + 1
+
 print S
+# print S[k]

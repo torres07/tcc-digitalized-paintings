@@ -1,0 +1,12 @@
+['cubismo_77.jpg',
+'cubismo_133.jpg',
+'cubismo_163.jpg',
+'cubismo_337.jpg',
+'cubismo_348.jpg',
+'cubismo_374.jpg',
+'expressionismo_8.jpg',
+'expressionismo_45.jpg',
+'expressionismo_163.jpg',
+'expressionismo_185.jpg',
+'expressionismo_239.jpg',
+'expressionismo_278.jpg']
