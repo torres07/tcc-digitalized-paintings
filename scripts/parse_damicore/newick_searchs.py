@@ -2,9 +2,10 @@
 # @Author: Pedro Torres
 # @Date:   2018-04-18 13:34:55
 # @Last Modified by:   Pedro Torres
-# @Last Modified time: 2018-04-21 19:29:19
+# @Last Modified time: 2018-04-28 19:08:10
 
 import random
+import threading
 import numpy as np
 from Bio import Phylo
 
@@ -15,7 +16,13 @@ from Bio import Phylo
 # tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/GIST/gist.newick', 'newick')
 
 # COLOR
-tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
+# tree = Phylo.read('/home/pedrotorres/Documents/UFC/TCC/implementacao/damicore/COLOR/color.newick', 'newick')
+
+# EXAMPLE
+# tree = Phylo.read('/home/pedrotorres/tmp/louco.newick', 'newick')
+
+# EXAMPLE 2
+# tree = Phylo.read('/home/pedrotorres/tmp/novo.newick', 'newick')
 
 
 # order ({'preorder', 'postorder', 'level'}) - Tree traversal order: 'preorder' (default) is depth-first search, 'postorder' is DFS with child nodes preceding parents, and 'level' is breadth-first search.
@@ -53,11 +60,8 @@ def euclidian_distances(descs, n_pinturas, outs = []):
 	if(descs == 'lbp'):
 		dir_ = '/home/pedrotorres/Documents/UFC/TCC/implementacao/LBP/txt/files'
 
-	if(outs == []):
-		txts = files_random(n_pinturas)
-	else:
-		outs = outs.split(' ')
-		txts = outs[:len(outs) - 1]
+	outs = outs.split(' ')
+	txts = outs[:len(outs) - 1]
 
 	elems = []
 	for t in txts:
@@ -92,13 +96,9 @@ def euclidian_distances(descs, n_pinturas, outs = []):
 	return avg_
 
 
-def branch_distances(tree, n_pinturas, outs = []):
-	if(outs == []):
-		txts = files_random(n_pinturas)
-		txts = map(str, txts)
-	else:
-		outs = outs.split(' ')
-		txts = outs[:len(outs) - 1]
+def branch_distances(tree, n_pinturas, outs):
+	outs = outs.split(' ')
+	txts = outs[:len(outs) - 1]
 
 	elems = []
 	elems = map(concat_txt, txts)
@@ -128,12 +128,17 @@ def branch_distances(tree, n_pinturas, outs = []):
 
 	return avg_
 
-def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
+def gerar_dados_exposicoes(desc, n_exp, n_pinturas, tree=''):
 
 	l_0 = []
 	l_1 = []
 	l_2 = []
 	l_3 = []
+
+	l_0_ = []
+	l_1_ = []
+	l_2_ = []
+	l_3_ = []
 
 	for i in range(n_exp):
 		files__ = search('level', n_pinturas)
@@ -141,10 +146,9 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
 		for i in files__:
 			i = i.split('.')[0]
 			out_ = out_ + i + ' '
-		if method == 'euclidian':
-			l_0.append(euclidian_distances(desc, n_pinturas, out_))
-		if method == 'branch':
-			l_0.append(branch_distances(tree, n_pinturas, out_))
+		
+		l_0.append(euclidian_distances(desc, n_pinturas, out_))
+		l_0_.append(branch_distances(tree, n_pinturas, out_))
 	
 	print('level end')
 
@@ -154,10 +158,8 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
 		for i in files__:
 			i = i.split('.')[0]
 			out_ = out_ + i + ' '
-		if method == 'euclidian':
-			l_1.append(euclidian_distances(desc, n_pinturas, out_))
-		if method == 'branch':
-			l_1.append(branch_distances(tree, n_pinturas, out_))
+		l_1.append(euclidian_distances(desc, n_pinturas, out_))
+		l_1_.append(branch_distances(tree, n_pinturas, out_))
 
 	print('preorder end')
 
@@ -167,29 +169,42 @@ def gerar_dados_exposicoes(desc, n_exp, n_pinturas, method, tree=''):
 		for i in files__:
 			i = i.split('.')[0]
 			out_ = out_ + i + ' '
-		if method == 'euclidian':
-			l_2.append(euclidian_distances(desc, n_pinturas, out_))
-		if method == 'branch':
-			l_2.append(branch_distances(tree, n_pinturas, out_))
+		l_2.append(euclidian_distances(desc, n_pinturas, out_))
+		l_2_.append(branch_distances(tree, n_pinturas, out_))
 
 	print('postorder end')
 
 	for i in range(n_exp):
-		if method == 'euclidian':
-			l_3.append(euclidian_distances(desc, n_pinturas))
-		if method == 'branch':
-			l_3.append(branch_distances(tree, n_pinturas))
+		txts = files_random(n_pinturas)
+		txts = map(str, txts)
+		out_ = ''
+		for i in txts:
+			i = i.split('.')[0]
+			out_ = out_ + i + ' '
+		l_3.append(euclidian_distances(desc, n_pinturas, out_))
+		l_3_.append(branch_distances(tree, n_pinturas, out_))
 
 	print('random end')
 	
-	return l_0 + l_1 + l_2 + l_3
+	return ((l_0 + l_1 + l_2 + l_3), (l_0_ + l_1_ + l_2_ + l_3_))
 
-print 'color'
-print gerar_dados_exposicoes('color', 100, 12, 'branch', tree)
 
+if __name__ == '__main__':
+	print 'color'
+
+	euc, bnc = gerar_dados_exposicoes('color', 100, 48, tree)
+	print euc
+	print bnc
+
+
+# i_ = tree.find_any('Bovine')
+# j_ = tree.find_any('Gibbon')
+# k_ = tree.find_any('Mouse')
+# print tree.distance(i_,j_)
+# print tree.distance(i_,k_)
+
+# pinturas = search('preorder', 10)
 # saida = ''
-# pinturas = search('postorder', 12)
-
 # for i in pinturas:
 # 	saida = saida + i.split('.')[0] + ' '
 

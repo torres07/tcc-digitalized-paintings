@@ -1,0 +1,17 @@
+['raccoon', 'bear', 'sea_lion', 'seal', 'monkey', 'cat', 'weasel', 'dog']
+['dog', 'raccoon', 'bear', 'sea_lion', 'seal', 'weasel', 'monkey', 'cat']
+False
+Clade
+Clade
+raccoon
+bear
+Clade
+Clade
+sea_lion
+seal
+Clade
+Clade
+monkey
+cat
+weasel
+dog

@@ -1,4 +1,119 @@
-COLOR
-bfs end
-bfsr end
-dfs end
+1.txt
+410.txt
+7.txt
+Clade
+Clade
+1075.txt
+4.txt
+Clade
+Clade
+1076.txt
+1080.txt
+Clade
+411.txt
+6.txt
+Clade
+Clade
+1077.txt
+412.txt
+Clade
+1078.txt
+1081.txt
+5.txt
+Clade
+3.txt
+Clade
+408.txt
+Clade
+Clade
+409.txt
+Clade
+Clade
+Clade
+404.txt
+407.txt
+9.txt
+Clade
+Clade
+Clade
+406.txt
+8.txt
+Clade
+Clade
+1082.txt
+2.txt
+Clade
+Clade
+Clade
+10.txt
+405.txt
+Clade
+1079.txt
+Clade
+Clade
+1083.txt
+1084.txt
+413.txt
+Clade
+Clade
+Clade
+Tree(rooted=False, weight=1.0)
+    Clade()
+        Clade(branch_length=0.000265035287398)
+            Clade(branch_length=0.00131117668025)
+                Clade(branch_length=0.00115120989131)
+                    Clade(branch_length=0.00177932107855)
+                        Clade(branch_length=0.462847961579, name='1.txt')
+                        Clade(branch_length=0.00416958228053)
+                            Clade(branch_length=0.464029234821, name='410.txt')
+                            Clade(branch_length=0.463690063425, name='7.txt')
+                    Clade(branch_length=0.00092694884904)
+                        Clade(branch_length=0.463753028406, name='1075.txt')
+                        Clade(branch_length=0.462121097468, name='4.txt')
+                Clade(branch_length=0.00131996531045)
+                    Clade(branch_length=0.00272157076592)
+                        Clade(branch_length=0.000815796710692)
+                            Clade(branch_length=0.000582010041593)
+                                Clade(branch_length=0.000945260217521)
+                                    Clade(branch_length=0.00194689708136)
+                                        Clade(branch_length=0.457523129761, name='1076.txt')
+                                        Clade(branch_length=0.462931415694, name='1080.txt')
+                                    Clade(branch_length=0.00656812595917)
+                                        Clade(branch_length=0.45802559783, name='411.txt')
+                                        Clade(branch_length=0.466886682871, name='6.txt')
+                                Clade(branch_length=0.00244776382346)
+                                    Clade(branch_length=0.00304200453596)
+                                        Clade(branch_length=0.460452977515, name='1077.txt')
+                                        Clade(branch_length=0.459547022485, name='412.txt')
+                                    Clade(branch_length=0.00263031507001)
+                                        Clade(branch_length=8.79810680151e-05)
+                                            Clade(branch_length=0.474350736776, name='1078.txt')
+                                            Clade(branch_length=0.00301618021141)
+                                                Clade(branch_length=0.00492274939834)
+                                                    Clade(branch_length=0.00236149110563)
+                                                        Clade(branch_length=0.463393314623, name='1081.txt')
+                                                        Clade(branch_length=0.456720808059, name='5.txt')
+                                                    Clade(branch_length=0.474080086695, name='3.txt')
+                                                Clade(branch_length=0.465191740153, name='408.txt')
+                                        Clade(branch_length=0.461048961235, name='409.txt')
+                            Clade(branch_length=0.0043808278358)
+                                Clade(branch_length=0.455859218415, name='404.txt')
+                                Clade(branch_length=0.00126204942217)
+                                    Clade(branch_length=0.456689659435, name='407.txt')
+                                    Clade(branch_length=0.459443958191, name='9.txt')
+                        Clade(branch_length=0.000930528864821)
+                            Clade(branch_length=0.464940075671, name='406.txt')
+                            Clade(branch_length=0.466287994505, name='8.txt')
+                    Clade(branch_length=0.00693469412167)
+                        Clade(branch_length=0.458260606117, name='1082.txt')
+                        Clade(branch_length=0.456528126277, name='2.txt')
+            Clade(branch_length=0.00216469857398)
+                Clade(branch_length=0.00530383293261)
+                    Clade(branch_length=0.468526245327, name='10.txt')
+                    Clade(branch_length=0.46706932254, name='405.txt')
+                Clade(branch_length=0.467732856458, name='1079.txt')
+        Clade(branch_length=0.000265035287398)
+            Clade(branch_length=0.457878885158, name='1083.txt')
+            Clade(branch_length=0.00515594256082)
+                Clade(branch_length=0.454712375846, name='1084.txt')
+                Clade(branch_length=0.464130249419, name='413.txt')
